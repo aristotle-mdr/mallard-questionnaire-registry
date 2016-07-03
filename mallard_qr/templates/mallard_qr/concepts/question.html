@@ -24,11 +24,6 @@
 <h2>Question Text</h2>
 <div class="panel panel-default question_text">
 <div class="panel-body">
-    <p>{{ item.question_text|safe }}
-    </p>
-    {% for response in item.response_domains.all %}
-        --{{ response }}
-    {% endfor %}
     {% if item|can_edit:request.user %}
     <a href="{% url 'mallard_mdr:question_alter_responses' item.id %}"
         data-toggle="modal" data-target="#editResponsesPopover"
@@ -38,6 +33,16 @@
     </a>
     {% bootstrap_modal 'editResponsesPopover' %}
     {% endif %}
+    <p>{{ item.question_text|safe }}
+    </p>
+    <ul>
+    {% for response in item.response_domains.all %}
+    <li>
+        {% include "aristotle_mdr/helpers/itemLink.html" with item=response.value_domain showType=False %}
+        {% include "aristotle_mdr/concepts/valueDomainRepresentation.html" with item=response.value_domain %}
+    </li>
+    {% endfor %}
+    </ul>
 </div>
 </div>
 {% endif %}

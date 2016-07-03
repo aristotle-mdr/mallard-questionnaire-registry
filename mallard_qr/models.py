@@ -30,6 +30,11 @@ class Question(aristotle.models.concept):
 
 
 class ResponseDomain(aristotle.models.aristotleComponent):
+    class Meta:
+        ordering = ['order']
+    @property
+    def parentItem(self):
+        return self.question
     question = models.ForeignKey(Question, related_name="response_domains")
     value_domain = models.ForeignKey(aristotle.models.ValueDomain)
     maximum_occurances = models.PositiveIntegerField(
@@ -41,6 +46,12 @@ class ResponseDomain(aristotle.models.aristotleComponent):
         help_text=_("The minimum number of times a response can be included in a question")
         )
     blank_is_missing_value = models.BooleanField(default=False, help_text=_("When value is true a blank or empty variable content should be treated as a missing value."))
+    order = models.PositiveSmallIntegerField(
+        "Position",
+        null=True,
+        blank=True,
+        help_text=_("If a dataset is ordered, this indicates which position this item is in a dataset.")
+        )
 
 """
 class QuestionModule(aristotle.models.concept):
