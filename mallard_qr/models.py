@@ -19,7 +19,6 @@ class AdministrationMode(aristotle.models.unmanagedObject):
 class Question(aristotle.models.concept):
     template = "mallard_qr/question.html"
     collected_data_element = models.ForeignKey(aristotle.models.DataElement,blank=True,null=True,related_name="questions")
-    response_domain = models.ManyToManyField(aristotle.models.ValueDomain,verbose_name = "Value Domain",blank=True,null=True)
     question_text = aristotle.models.RichTextField(blank=True)
     instruction_text = aristotle.models.RichTextField(blank=True)
     # administration_modes = models.ManyToManyField(AdministrationMode,blank=True,null=True)
