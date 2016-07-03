@@ -3,7 +3,6 @@
 <h3>Use in Questions</h3>
 {% if item.questions.exists %}
     This data element collected by the following questions, some may be hidden based on your current permissions.
-    {% if item.as_numerator.exists %}
     <ul>
         {% for q in item.questions.all|can_view_iter:user %}
             <li>{% include "aristotle_mdr/helpers/itemLink.html" with item=q %}</li>
