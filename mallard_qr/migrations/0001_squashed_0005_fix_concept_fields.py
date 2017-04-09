@@ -12,8 +12,7 @@ class Migration(migrations.Migration):
     replaces = [(b'mallard_qr', '0001_initial'), (b'mallard_qr', '0002_auto_20160621_2105'), (b'mallard_qr', '0003_auto_20160703_0540'), (b'mallard_qr', '0004_remove_question_response_domain'), (b'mallard_qr', '0005_fix_concept_fields')]
 
     dependencies = [
-        ('aristotle_mdr', '0013_concept_field_fixer_part1'),
-        ('aristotle_mdr', '0001_squashed_0012_better_workflows'),
+        ('aristotle_mdr', '0001_squashed_0017_add_organisations'),
     ]
 
     operations = [
