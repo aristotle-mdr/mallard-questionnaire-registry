@@ -19,13 +19,16 @@ class AdministrationMode(aristotle.models.unmanagedObject):
 class Question(aristotle.models.concept):
     template = "mallard_qr/question.html"
     collected_data_element = models.ForeignKey(aristotle.models.DataElement,blank=True,null=True,related_name="questions")
-    question_text = aristotle.models.RichTextField(blank=True)
+    question_text = aristotle.models.RichTextField(
+        blank=True,
+        help_text=_("The text which describes the information which is to be obtained.")
+    )
     instruction_text = aristotle.models.RichTextField(blank=True)
     # administration_modes = models.ManyToManyField(AdministrationMode,blank=True,null=True)
     estimated_seconds_response_time = models.PositiveIntegerField(
         null=True, blank=True,
-        help_text=_("he estimated amount of time required to answer a question expressed in seconds.")
-        )
+        help_text=_("The estimated amount of time required to answer a question expressed in seconds.")
+    )
 
 
 class ResponseDomain(aristotle.models.aristotleComponent):
@@ -51,6 +54,7 @@ class ResponseDomain(aristotle.models.aristotleComponent):
         blank=True,
         help_text=_("If a dataset is ordered, this indicates which position this item is in a dataset.")
         )
+
 
 """
 class QuestionModule(aristotle.models.concept):

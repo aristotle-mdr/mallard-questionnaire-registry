@@ -25,7 +25,7 @@
 <div class="panel panel-default question_text">
 <div class="panel-body">
     {% if item|can_edit:request.user %}
-    <a href="{% url 'mallard_mdr:question_alter_responses' item.id %}"
+    <a href="{% url 'mallard_qr:question_alter_responses' item.id %}"
         data-toggle="modal" data-target="#editResponsesPopover"
         class="pull-right btn btn-default btn-sm">
         <i class="fa fa-plus"></i>
