@@ -33,4 +33,14 @@
     </ul>
 {% endif %}
 
+{% if item.collected_data_element %}
+<h2>Collected Data element</h2>
+<div>
+    {% with de=item.collected_data_element %}
+    {% include "aristotle_mdr/helpers/itemLink.html" with item=de %}
+    {{ de.definition }}
+    {% endwith %}
+</div>
+{% endif %}
+
 {% endblock %}
